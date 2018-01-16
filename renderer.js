@@ -1,16 +1,23 @@
 
-const {ipcRenderer} = require('electron');
+const { ipcRenderer } = require('electron');
 const versionEL = document.querySelector("#version");
-
+const CountEL = document.querySelector("#window-count");
 versionEL.innerText = process.versions.electron;
 
-document.querySelector("#create-window").addEventListener('click', ()=>{
+ipcRenderer.on("window-count", (event, props) => {
+    CountEL.textContent = props.count;
+});
+
+ipcRenderer.send('get-window-count');
+
+document.querySelector("#create-window").addEventListener('click', () => {
     ipcRenderer.send("create-window", {
         x: 0,
         y: 0
     });
-})
+});
 
+// GEt movies
 let moviesList = document.getElementById('movies');
 
 function addMoviesToList(movie) {
@@ -52,6 +59,6 @@ let ShowMovie = (movies) => {
         addMoviesToList(movie));
 };
 
-document.querySelector("#showMovies").addEventListener("click", () =>{
+document.querySelector("#showMovies").addEventListener("click", () => {
     getData("superman").then(response => ShowMovie(response));
 });
