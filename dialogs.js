@@ -2,7 +2,7 @@ const { dialog, app, nativeImage} = require ('electron');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = {showMessage, showSaveDialog};
+module.exports = {showMessage, showSaveDialog, showOpenDialog};
 
 
 function showMessage(browserWindow) {
@@ -28,6 +28,17 @@ function showSaveDialog(browserWindow) {
                     dialog.showErrorBox("Save failed", err.message);
                 }
             })
+        };
+    });
+}
+
+function showOpenDialog(browserWindow) {
+    dialog.showOpenDialog(browserWindow, {
+        defaultPath: app.getPath('downloads'),
+        filters: [ {name: "Text Files", extensions: ["txt"] } ]
+    }, (filepath) => {
+        if (filepath){
+            console.log(filepath, fs.readFileSync(filepath[0], "utf8"));
         };
     });
 }
