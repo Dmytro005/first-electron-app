@@ -23,7 +23,7 @@ function setMainMenu(mainWindow) {
                     }
                 },
                 {
-                    label: "Say hello",
+                    label: "Say hello", 
                     click(){
                         showMessage(mainWindow);
                         // console.log("Showw");

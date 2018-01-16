@@ -1,6 +1,15 @@
+
+const {ipcRenderer} = require('electron');
 const versionEL = document.querySelector("#version");
 
 versionEL.innerText = process.versions.electron;
+
+document.querySelector("#create-window").addEventListener('click', ()=>{
+    ipcRenderer.send("create-window", {
+        x: 0,
+        y: 0
+    });
+})
 
 let moviesList = document.getElementById('movies');
 
