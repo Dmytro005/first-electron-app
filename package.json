@@ -15,5 +15,8 @@
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "^1.7.10"
+  },
+  "dependencies": {
+    "electron-icon-maker": "0.0.4"
   }
 }
