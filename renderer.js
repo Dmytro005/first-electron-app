@@ -2,6 +2,23 @@
 const { ipcRenderer } = require('electron');
 const versionEL = document.querySelector("#version");
 const CountEL = document.querySelector("#window-count");
+
+
+const {remote} = require('electron');
+const path = require('path');
+
+
+document.querySelector("#remote-window"),addEventListener("click", ()=>{
+    const win = new remote.BrowserWindow({
+        width: 400,
+        height: 200    
+    });
+
+    win.loadURL(path.join('file://',__dirname,"remote-window.html"));
+
+    console.log(remote);
+})
+
 versionEL.innerText = process.versions.electron;
 
 ipcRenderer.on("window-count", (event, props) => {
