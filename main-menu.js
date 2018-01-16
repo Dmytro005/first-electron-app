@@ -1,12 +1,15 @@
 const { app, Menu } = require('electron');
 
+const {showMessage} = require("./dialogs.js");
+const {showSaveDialog} = require("./dialogs.js");
+
 const isWindows = process.platform == "win32";
 
 module.exports = {
     setMainMenu
 };
 
-function setMainMenu() {
+function setMainMenu(mainWindow) {
     const template = [
         {
             label: isWindows ? "File" : app.getName(),
@@ -17,7 +20,26 @@ function setMainMenu() {
                     click() {
                         app.quit();
                     }
-                }
+                },
+                {
+                    label: "Say hello",
+                    click(){
+                        showMessage(mainWindow);
+                        // console.log("Showw");
+                    }
+                },
+                {
+                    label: "Save memory Usage info",
+                    click(){
+                        showSaveDialog(mainWindow);
+                    }
+                },
+                {
+                    label: "Open File",
+                    click(){
+
+                    }
+                },
             ]
         },
         {

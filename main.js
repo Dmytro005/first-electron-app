@@ -13,7 +13,8 @@ app.on("ready", ()=>{
     mainWindow.on("ready-to-show", ()=>{
         mainWindow.show();
     });
+    
     mainWindow.webContents.openDevTools();
 
-    setMainMenu();
+    setMainMenu(mainWindow);
 });
