@@ -2,9 +2,29 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: beige;
 
-    color: blue;
     font-family: "Open Sans", sans-serif;
     text-align: center;
+    
+    background-color: black;
+    color: white;
+    flex-direction: column;
+}
+
+
+#movies {
+    display: flex;
+    flex-wrap: wrap
+}
+
+img {
+    flex: 1 80px;
+    margin: 10px;
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+    filter: grayscale(0);
+}
+
+img:hover{
+    filter: grayscale(1);
 }

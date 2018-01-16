@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,31 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>
-        Your electon version
-        <span id="version"></span>
-    </h1>
+    <div>
+        <h1>
+            Your electon version
+            <span id="version"></span>
+            <a href="#"  id="showMovies">Get Movies</a>
+        </h1>
+    </div>
+
+    <div id="movies"></div>
 
     <script>
         require("./renderer.js");
     </script>
+
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.which === 123) {
+                require('electron').remote.getCurrentWindow().toggleDevTools();
+            } else if (e.which === 116) {
+                location.reload();
+            }
+        });
+    </script>
 </body>
+
 </html>
