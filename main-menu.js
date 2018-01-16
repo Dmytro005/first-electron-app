@@ -21,13 +21,51 @@ function setMainMenu() {
             ]
         },
         {
-            role: 'help',
+            role: 'Help',
             submenu: [
                 {
                     label: 'Learn More',
                     click() { require('electron').shell.openExternal('https://electron.atom.io'); }
                 }
             ]
+        },
+        {
+            label: "Edit",
+            submenu: [
+                { role: 'undo' },
+                { role: 'redo' },
+                { type: 'separator' },
+                {
+                    label: "I`m hungry",
+                    type: 'checkbox'
+                },
+                {
+                    label: "I'm dima",
+                    type: 'radio'
+                },
+                {
+                    label: "I'm superman",
+                    type: 'radio'
+                },
+                { type: 'separator' },
+
+                { role: 'toggledevtools' },
+                { role: 'cut' },
+                { role: 'paste' },
+                { role: 'copy' },
+            ]
+        },
+        {
+            label: "Window",
+            submenu: [
+                { role: 'toggledevtools' },
+                { role: 'zoomin' },
+                { role: 'zoomout' },
+                { role: 'resetzoom' },
+            ]
+        },
+        {
+            role: "windowMenu"
         }
 
     ];
