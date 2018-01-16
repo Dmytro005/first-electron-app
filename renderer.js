@@ -2,21 +2,36 @@
 const { ipcRenderer } = require('electron');
 const versionEL = document.querySelector("#version");
 const CountEL = document.querySelector("#window-count");
-
-
-const {remote} = require('electron');
 const path = require('path');
 
+const { remote } = require('electron');
+const currentWindow = remote.getCurrentWindow();
 
-document.querySelector("#remote-window"),addEventListener("click", ()=>{
-    const win = new remote.BrowserWindow({
+require('devtron').install();
+
+
+function onBlur() {
+    document.body.style = 'opacity: 0.2;';
+}
+
+function onFocus() {
+    document.body.style = 'opacity: 1;';
+}
+
+currentWindow.on('blur', onBlur);
+currentWindow.on('focus', onFocus);
+
+window.addEventListener('beforeunload', () => {
+    currentWindow.removeAllListeners();
+});
+
+document.querySelector("#remote-window").addEventListener("click", () => {
+    let win = new remote.BrowserWindow({
         width: 400,
-        height: 200    
+        height: 200
     });
-
-    win.loadURL(path.join('file://',__dirname,"remote-window.html"));
-
-    console.log(remote);
+    win.loadURL(path.join('file://', __dirname, "remote-window.html"));
+    // win.loadURL(path.join('file://', __dirname, "index.html"));
 })
 
 versionEL.innerText = process.versions.electron;

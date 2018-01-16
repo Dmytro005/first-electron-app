@@ -13,6 +13,7 @@
   "author": "Dima Harazdovskiy",
   "license": "ISC",
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron": "^1.7.10"
   }
 }
